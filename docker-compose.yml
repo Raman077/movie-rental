@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+  database:
+    image: mysql:5.7
+    container_name: database-video-rental
+    volumes:
+      - ./docker-database/data:/var/lib/mysql
+      - ./docker-database/dumps:/dumps
+    env_file:
+      - ./docker-database/.env
+  application:
+    build:
+      context: .
+    container_name: video-rental
+    depends_on:
+      - database
+
+

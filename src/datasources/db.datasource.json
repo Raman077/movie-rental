@@ -1,0 +1,8 @@
+{
+  "name": "mydb",
+  "connector": "mysql",
+  "database": "videorental",
+  "host": "localhost",
+  "username": "videorental",
+  "password": "videorental"
+}

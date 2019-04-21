@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+  database:
+    image: mysql:5.7
+    container_name: database-video-rental
+    env_file: .env
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./dumps:/dumps
