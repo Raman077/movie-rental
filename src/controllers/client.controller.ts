@@ -12,7 +12,7 @@ import {
 } from '@loopback/rest';
 import {inject} from '@loopback/core';
 
-import {Client, Rent} from '../models';
+import {Client} from '../models';
 import {ClientRepository} from '../repositories';
 
 export class ClientController {
