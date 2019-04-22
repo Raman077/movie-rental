@@ -14,9 +14,21 @@ import {inject} from '@loopback/core';
 
 import {Rent} from '../models';
 import {RentRepository} from '../repositories/rent.repository';
+import {BasicAuthService} from "../services/auth/basic-auth.service";
+import {ClientRepository} from "../repositories";
+import {Request} from "express";
 
 export class RentController {
-    constructor(@repository(RentRepository) protected rentRepository: RentRepository) {}
+    constructor(
+        @inject('services.BasicAuthService')
+        protected basicAuthService: BasicAuthService,
+        @repository(RentRepository) protected rentRepository: RentRepository,
+        @repository(ClientRepository) protected clientRepository: ClientRepository,
+        @inject(RestBindings.Http.RESPONSE) response: Response,
+        @inject(RestBindings.Http.REQUEST) request: Request,
+    ) {
+        this.basicAuthService.authenticate(response, request, this.clientRepository);
+    }
 
     @get('/rents', {
         responses: {

@@ -9,14 +9,23 @@ import {
     Response
 } from '@loopback/rest';
 import {MovieCopy} from '../models';
-import {MovieCopyRepository} from '../repositories';
+import {ClientRepository, MovieCopyRepository} from '../repositories';
 import {inject} from '@loopback/core';
+import {BasicAuthService} from "../services/auth/basic-auth.service";
+import {Request} from "express";
 
 export class MovieCopyController {
     constructor(
+        @inject('services.BasicAuthService')
+        protected basicAuthService: BasicAuthService,
         @repository(MovieCopyRepository)
         protected movieCopyRepository: MovieCopyRepository,
-    ) {}
+        @repository(ClientRepository) protected clientRepository: ClientRepository,
+        @inject(RestBindings.Http.RESPONSE) response: Response,
+        @inject(RestBindings.Http.REQUEST) request: Request,
+    ) {
+        this.basicAuthService.authenticate(response, request, this.clientRepository);
+    }
 
     @get('/movie-copy/{id}', {
         responses: {
