@@ -14,9 +14,19 @@ import {inject} from '@loopback/core';
 
 import {Client} from '../models';
 import {ClientRepository} from '../repositories';
+import {BasicAuthService} from '../services/auth/basic-auth.service';
+import {Request} from "express";
 
 export class ClientController {
-    constructor(@repository(ClientRepository) protected clientRepository: ClientRepository) {}
+    constructor(
+        @inject('services.BasicAuthService')
+        protected basicAuthService: BasicAuthService,
+        @repository(ClientRepository) protected clientRepository: ClientRepository,
+        @inject(RestBindings.Http.RESPONSE) response: Response,
+        @inject(RestBindings.Http.REQUEST) request: Request,
+    ) {
+        this.basicAuthService.authenticate(response, request, this.clientRepository);
+    }
 
     @get('/clients', {
         responses: {

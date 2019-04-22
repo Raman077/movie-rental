@@ -15,7 +15,7 @@ export class ServiceLayerApplication extends BootMixin(
 
     this.sequence(MySequence);
 
-    this.basePath('/4all/video-rental');
+    this.basePath('/4all/movie-rental');
 
     this.static('/', path.join(__dirname, '../public'));
 

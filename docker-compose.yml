@@ -7,6 +7,7 @@ services:
     volumes:
       - ./docker-database/data:/var/lib/mysql
       - ./docker-database/dumps:/dumps
+      - ./docker-database/dumps/videorental.sql:/docker-entrypoint-initdb.d/dump.sql
     env_file:
       - ./docker-database/.env
   application:
