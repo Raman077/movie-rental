@@ -24,7 +24,11 @@ export class MovieController {
         protected basicAuthService: BasicAuthService,
         @repository(MovieRepository) protected movieRepository: MovieRepository,
         @repository(ClientRepository) protected clientRepository: ClientRepository,
-    ) {}
+        @inject(RestBindings.Http.RESPONSE) response: Response,
+        @inject(RestBindings.Http.REQUEST) request: Request,
+    ) {
+        this.basicAuthService.authenticate(response, request, this.clientRepository);
+    }
 
     @get('/movies', {
         responses: {
@@ -39,13 +43,9 @@ export class MovieController {
         },
     })
     async findMovies(
-        @inject(RestBindings.Http.RESPONSE) response: Response,
-        @inject(RestBindings.Http.REQUEST) request: Request,
         @param.query.object('filter', getFilterSchemaFor(Movie)) filter?: Filter,
         @param.query.string('title') title?: string,
     ): Promise<Movie[]> {
-        this.basicAuthService.authenticate(response, request, this.clientRepository);
-
         return await this.movieRepository.findSearch(filter, title);
     }
 
