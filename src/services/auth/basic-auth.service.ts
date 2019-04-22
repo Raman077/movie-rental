@@ -1,6 +1,7 @@
 import {Provider} from '@loopback/core';
 import {Response, Request} from '@loopback/rest';
 import {ClientRepository} from '../../repositories';
+const crypto = require('crypto');
 
 export class BasicAuthService {
     async authenticate(res: Response, req: Request, clientRepository: ClientRepository) {
@@ -11,7 +12,10 @@ export class BasicAuthService {
         // verify auth credentials
         const base64Credentials =  req.headers.authorization.split(' ')[1];
         const credentials = Buffer.from(base64Credentials, 'base64').toString('ascii');
-        const [email, pass] = credentials.split(':');
+        let [email, pass] = credentials.split(':');
+
+        pass = BasicAuthService.md5(pass);
+
         const client = await clientRepository.findOne({"where": {email, pass}});
 
         if (!client) {
@@ -19,6 +23,10 @@ export class BasicAuthService {
         }
 
        return client;
+    }
+
+    static md5(string: string) {
+        return crypto.createHash('md5').update(string).digest('hex');
     }
 }
 
