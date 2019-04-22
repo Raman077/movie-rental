@@ -8,15 +8,23 @@ import {
     getFilterSchemaFor,
     param,
     RestBindings,
-    Response
+    Response,
+    Request
 } from '@loopback/rest';
 import {inject} from '@loopback/core';
 
 import {Movie} from '../models';
 import {MovieRepository} from '../repositories';
+import {ClientRepository} from '../repositories';
+import {BasicAuthService} from '../services/auth/basic-auth.service';
 
 export class MovieController {
-    constructor(@repository(MovieRepository) protected movieRepository: MovieRepository) {}
+    constructor(
+        @inject('services.BasicAuthService')
+        protected basicAuthService: BasicAuthService,
+        @repository(MovieRepository) protected movieRepository: MovieRepository,
+        @repository(ClientRepository) protected clientRepository: ClientRepository,
+    ) {}
 
     @get('/movies', {
         responses: {
@@ -31,9 +39,13 @@ export class MovieController {
         },
     })
     async findMovies(
+        @inject(RestBindings.Http.RESPONSE) response: Response,
+        @inject(RestBindings.Http.REQUEST) request: Request,
         @param.query.object('filter', getFilterSchemaFor(Movie)) filter?: Filter,
         @param.query.string('title') title?: string,
     ): Promise<Movie[]> {
+        this.basicAuthService.authenticate(response, request, this.clientRepository);
+
         return await this.movieRepository.findSearch(filter, title);
     }
 
