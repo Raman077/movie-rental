@@ -48,14 +48,6 @@ describe('Movie', () => {
             .expect('Content-Type', 'application/json')
     });
 
-    // it('Delete movie', async () => {
-    //     await client
-    //         .del('/4all/movie-rental/movie/5')
-    //         .auth('rsilveiracc@gmail.com', 'testing2')
-    //         .expect(200)
-    //         .expect('Content-Type', 'application/json; charset=utf-8')
-    // });
-
     it('Update movie', async () => {
         await client
             .put('/4all/movie-rental/movie/4')

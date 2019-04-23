@@ -107,6 +107,148 @@ Response
 
 ```
 
+- Movie Create
+```bash
+POST: http://localhost:3000/4all/movie-rental/movie
+```
+Body:
+```bash
+{
+    "title": "The Avengers: Endgame",
+    "director": "Kevin Feige"
+}
+```
+Response
+```bash
+{
+  "id": 2,
+  "title": "The Avengers: Endgame",
+  "director": "Kevin Feige"
+  "createdAt": "2019-04-23T00:50:21.405Z"
+}
+```
+
+- Movie Update
+```bash
+PUT: http://localhost:3000/4all/movie-rental/movie/{MOVIE_ID}
+```
+Body:
+```bash
+{
+    "title": "The Avengers: Age of Ultron",
+    "director": "Kevin"
+}
+```
+Response
+```bash
+{
+  "id": 2,
+  "title": "The Avengers: Age of Ultron",
+  "director": "Kevin"
+  "createdAt": "2019-04-23T00:50:21.405Z"
+}
+```
+
+- Movie Detail
+```bash
+GET: http://localhost:3000/4all/movie-rental/movie/{MOVIE_ID}
+```
+Response
+```bash
+{
+  "id": 2,
+  "title": "The Avengers: Age of Ultron",
+  "director": "Kevin"
+  "createdAt": "2019-04-23T00:50:21.405Z"
+}
+```
+
+- Movie Delete
+```bash
+DEL: http://localhost:3000/4all/movie-rental/movie/{MOVIE_ID}
+```
+- Movie List
+```bash
+GET: http://localhost:3000/4all/movie-rental/movies
+```
+
+Response
+```bash
+[
+    {
+      "id": 2,
+      "title": "The Avengers: Age of Ultron",
+      "director": "Kevin"
+      "createdAt": "2019-04-23T00:50:21.405Z"
+    },
+    {
+      "id": 3,
+      "title": "The Avengers: Endgame",
+      "director": "Kevin"
+      "createdAt": "2019-04-23T00:50:21.405Z"
+    }
+]
+
+```
+
+- Movie Copy Create
+```bash
+POST: http://localhost:3000/4all/movie-rental/movie-copy
+```
+Body:
+```bash
+{
+    "movieID": 2
+}
+```
+Response
+```bash
+{
+  "id": 1,
+  "movieID": 2
+  "status": "AVAILABLE"
+}
+```
+
+- Movie Copy Update
+```bash
+PUT: http://localhost:3000/4all/movie-rental/movie-copy/{MOVIE_COPY_ID}
+```
+Body:
+```bash
+{
+  "movieID": 2
+  "status": "RENTED"
+}
+```
+Response
+```bash
+{
+  "id": 2,
+  "movieID": 2,
+  "status": "RENTED"
+}
+```
+
+- Movie Copy Detail
+```bash
+GET: http://localhost:3000/4all/movie-rental/movie-copy/{MOVIE_COPY_ID}
+```
+Response
+```bash
+{
+  "id": 2,
+  "title": "The Avengers: Age of Ultron",
+  "director": "Kevin"
+  "createdAt": "2019-04-23T00:50:21.405Z"
+}
+```
+
+- Movie Copy Delete
+```bash
+DEL: http://localhost:3000/4all/movie-rental/movie-copy/{MOVIE_COPY_ID}
+```
+
 ## Tests
 
 Run `npm test` from the root folder.
