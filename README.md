@@ -167,9 +167,27 @@ Response
 ```bash
 DEL: http://localhost:3000/4all/movie-rental/movie/{MOVIE_ID}
 ```
-- Movie List
+- Movie Search
 ```bash
-GET: http://localhost:3000/4all/movie-rental/movies
+GET: http://localhost:3000/4all/movie-rental/movies?title=avengers
+```
+Response
+```bash
+[
+    {
+        "id": 2,
+        "title": "The Avengers: Age of Ultron",
+        "director": "Kevin"
+        "createdAt": "2019-04-23T00:50:21.405Z"
+    },
+    {
+          "id": 3,
+          "title": "The Avengers: Endgame",
+          "director": "Kevin Feige"
+          "createdAt": "2019-04-23T00:50:21.405Z"
+    }
+]
+
 ```
 
 Response
