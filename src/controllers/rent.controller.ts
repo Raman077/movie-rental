@@ -94,7 +94,7 @@ export class RentController {
     @put('/rent/{id}', {
         responses: {
             '200': {
-                description: 'City model instance',
+                description: '',
                 content: {
                     'application/json': {schema: {'x-ts-type': Rent}},
                 },

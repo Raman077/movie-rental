@@ -249,6 +249,88 @@ Response
 DEL: http://localhost:3000/4all/movie-rental/movie-copy/{MOVIE_COPY_ID}
 ```
 
+- Rent Create
+```bash
+POST: http://localhost:3000/4all/movie-rental/rent
+```
+Body:
+```bash
+{
+	"status": "RENTED",
+	"clientId": 1,
+	"movieCopyId": 2
+}
+```
+Response
+```bash
+{
+  "id": 1,
+  "status": "RENTED",
+   "clientId": 1,
+   "movieCopyId": 2,
+   "rentDate": "2019-04-23T00:50:21.405Z"
+}
+```
+
+- Rent Update
+```bash
+PUT: http://localhost:3000/4all/movie-rental/rent/{RENT_ID}
+```
+Body:
+```bash
+{
+  "movieID": 2
+  "clientId": 1,
+  "status": "AVAILABLE"
+}
+```
+Response
+```bash
+{
+  "id": 2,
+  "movieID": 2,
+  "clientId": 1,
+  "status": "AVAILABLE"
+}
+```
+
+- Rent Detail
+```bash
+GET: http://localhost:3000/4all/movie-rental/rent/{RENT_ID}
+```
+Response
+```bash
+{
+  "id": 2,
+  "movieID": 2,
+  "clientId": 1,
+  "status": "AVAILABLE"
+}
+```
+
+- Rent List
+```bash
+GET: http://localhost:3000/4all/movie-rental/rents
+```
+Response
+```bash
+[
+    {
+      "id": 2,
+      "movieID": 2,
+      "clientId": 1,
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 3,
+      "movieID": 2,
+      "clientId": 3,
+      "status": "RENTED"
+    }
+]
+
+```
+
 ## Tests
 
 Run `npm test` from the root folder.

@@ -97,7 +97,7 @@ export class MovieController {
     @put('/movie/{id}', {
         responses: {
             '200': {
-                description: 'City model instance',
+                description: '',
                 content: {
                     'application/json': {schema: {'x-ts-type': Movie}},
                 },
