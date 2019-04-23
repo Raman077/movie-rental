@@ -1,4 +1,5 @@
-# Video Rental 
+[![Build Status](https://travis-ci.org/rsilveira65/movie-rental.svg?branch=master)](https://travis-ci.org/rsilveira65/movie-rental)
+# Movie Rental 
 
 ## Setup
 ### 1. Install project dependencies  

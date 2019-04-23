@@ -12,3 +12,5 @@ services:
     volumes:
       - ./data:/var/lib/mysql
       - ./dumps:/dumps
+      - ./dumps/videorental.sql:/docker-entrypoint-initdb.d/dump.sql
+
