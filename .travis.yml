@@ -4,7 +4,7 @@ services:
 before_script:
   - docker-compose up -d --build
 script:
-  - docker-compose exec video-rental npm test
+  - docker exec video-rental npm test
 notifications:
   on_success: always
   on_failure: always
