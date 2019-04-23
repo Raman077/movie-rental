@@ -35,19 +35,19 @@ POST: http://localhost:3000/4all/movie-rental/client
 Body:
 ```bash
 {
-	"name": "Rafael Silveira",
-	"email": "me@rsilveira.dev",
-	"pass": "testing"
+    "name": "Rafael Silveira",
+    "email": "me@rsilveira.dev",
+    "pass": "testing"
 }
 ```
 Response
 ```bash
 {
-  "id": 27,
-  "name": "Rafael Silveira",
-  "email": "rsilveiracc2@gmail.com",
-  "pass": "testing",
-  "createdAt": "2019-04-23T00:50:21.405Z"
+    "id": 27,
+    "name": "Rafael Silveira",
+    "email": "rsilveiracc2@gmail.com",
+    "pass": "testing",
+    "createdAt": "2019-04-23T00:50:21.405Z"
 }
 ```
 
@@ -58,19 +58,19 @@ PUT: http://localhost:3000/4all/movie-rental/client/{CLIENT_ID}
 Body:
 ```bash
 {
-	"name": "Rafael Oliveira",
-	"email": "me@rsilveira.dev",
-	"pass": "testing"
+    "name": "Rafael Oliveira",
+    "email": "me@rsilveira.dev",
+    "pass": "testing"
 }
 ```
 Response
 ```bash
 {
-  "id": 27,
-  "name": "Rafael Oliveira",
-  "email": "rsilveiracc2@gmail.com",
-  "pass": "testing",
-  "createdAt": "2019-04-23T00:50:21.405Z"
+    "id": 27,
+    "name": "Rafael Oliveira",
+    "email": "rsilveiracc2@gmail.com",
+    "pass": "testing",
+    "createdAt": "2019-04-23T00:50:21.405Z"
 }
 ```
 
@@ -121,10 +121,10 @@ Body:
 Response
 ```bash
 {
-  "id": 2,
-  "title": "The Avengers: Endgame",
-  "director": "Kevin Feige"
-  "createdAt": "2019-04-23T00:50:21.405Z"
+    "id": 2,
+    "title": "The Avengers: Endgame",
+    "director": "Kevin Feige"
+    "createdAt": "2019-04-23T00:50:21.405Z"
 }
 ```
 
@@ -142,10 +142,10 @@ Body:
 Response
 ```bash
 {
-  "id": 2,
-  "title": "The Avengers: Age of Ultron",
-  "director": "Kevin"
-  "createdAt": "2019-04-23T00:50:21.405Z"
+    "id": 2,
+    "title": "The Avengers: Age of Ultron",
+    "director": "Kevin"
+    "createdAt": "2019-04-23T00:50:21.405Z"
 }
 ```
 
@@ -156,10 +156,10 @@ GET: http://localhost:3000/4all/movie-rental/movie/{MOVIE_ID}
 Response
 ```bash
 {
-  "id": 2,
-  "title": "The Avengers: Age of Ultron",
-  "director": "Kevin"
-  "createdAt": "2019-04-23T00:50:21.405Z"
+    "id": 2,
+    "title": "The Avengers: Age of Ultron",
+    "director": "Kevin"
+    "createdAt": "2019-04-23T00:50:21.405Z"
 }
 ```
 
@@ -204,9 +204,9 @@ Body:
 Response
 ```bash
 {
-  "id": 1,
-  "movieID": 2
-  "status": "AVAILABLE"
+    "id": 1,
+    "movieID": 2
+    "status": "AVAILABLE"
 }
 ```
 
@@ -217,16 +217,16 @@ PUT: http://localhost:3000/4all/movie-rental/movie-copy/{MOVIE_COPY_ID}
 Body:
 ```bash
 {
-  "movieID": 2
-  "status": "RENTED"
+    "movieID": 2
+    "status": "RENTED"
 }
 ```
 Response
 ```bash
 {
-  "id": 2,
-  "movieID": 2,
-  "status": "RENTED"
+    "id": 2,
+    "movieID": 2,
+    "status": "RENTED"
 }
 ```
 
@@ -237,10 +237,10 @@ GET: http://localhost:3000/4all/movie-rental/movie-copy/{MOVIE_COPY_ID}
 Response
 ```bash
 {
-  "id": 2,
-  "title": "The Avengers: Age of Ultron",
-  "director": "Kevin"
-  "createdAt": "2019-04-23T00:50:21.405Z"
+    "id": 2,
+    "title": "The Avengers: Age of Ultron",
+    "director": "Kevin"
+    "createdAt": "2019-04-23T00:50:21.405Z"
 }
 ```
 
@@ -256,19 +256,19 @@ POST: http://localhost:3000/4all/movie-rental/rent
 Body:
 ```bash
 {
-	"status": "RENTED",
-	"clientId": 1,
-	"movieCopyId": 2
+    "status": "RENTED",
+    "clientId": 1,
+    "movieCopyId": 2
 }
 ```
 Response
 ```bash
 {
-  "id": 1,
-  "status": "RENTED",
-   "clientId": 1,
-   "movieCopyId": 2,
-   "rentDate": "2019-04-23T00:50:21.405Z"
+    "id": 1,
+    "status": "RENTED",
+    "clientId": 1,
+    "movieCopyId": 2,
+    "rentDate": "2019-04-23T00:50:21.405Z"
 }
 ```
 
@@ -279,18 +279,18 @@ PUT: http://localhost:3000/4all/movie-rental/rent/{RENT_ID}
 Body:
 ```bash
 {
-  "movieID": 2
-  "clientId": 1,
-  "status": "AVAILABLE"
+    "movieID": 2
+    "clientId": 1,
+    "status": "AVAILABLE"
 }
 ```
 Response
 ```bash
 {
-  "id": 2,
-  "movieID": 2,
-  "clientId": 1,
-  "status": "AVAILABLE"
+    "id": 2,
+    "movieID": 2,
+    "clientId": 1,
+    "status": "AVAILABLE"
 }
 ```
 
@@ -301,10 +301,10 @@ GET: http://localhost:3000/4all/movie-rental/rent/{RENT_ID}
 Response
 ```bash
 {
-  "id": 2,
-  "movieID": 2,
-  "clientId": 1,
-  "status": "AVAILABLE"
+    "id": 2,
+    "movieID": 2,
+    "clientId": 1,
+    "status": "AVAILABLE"
 }
 ```
 
