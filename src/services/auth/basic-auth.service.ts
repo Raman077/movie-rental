@@ -1,12 +1,14 @@
 import {Provider} from '@loopback/core';
 import {Response, Request} from '@loopback/rest';
 import {ClientRepository} from '../../repositories';
+import {Client} from "../../models";
 const crypto = require('crypto');
 
 export class BasicAuthService {
-    async authenticate(res: Response, req: Request, clientRepository: ClientRepository) {
+    async authenticate(res: Response, req: Request, clientRepository: ClientRepository): Promise<Client | null> {
         // check for basic auth header
         if (!req.headers.authorization || req.headers.authorization.indexOf('Basic ') === -1) {
+            // @ts-ignore
             return res.status(401).json({message: 'Missing Authorization Header'});
         }
         // verify auth credentials
@@ -19,6 +21,7 @@ export class BasicAuthService {
         const client = await clientRepository.findOne({"where": {email, pass}});
 
         if (!client) {
+            // @ts-ignore
             return res.status(401).json({message: 'Invalid Authentication Credentials'});
         }
 
