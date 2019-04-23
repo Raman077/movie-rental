@@ -4,6 +4,7 @@ services:
 before_script:
   - mv src/datasources/db.datasource.test.json src/datasources/db.datasource.json
   - docker-compose up -d --build
+  - sleep 30
 script:
   - docker exec video-rental npm test
 notifications:
