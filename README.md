@@ -11,7 +11,7 @@ With [npm](https://npmjs.org/) installed, run
 
     $ npm install
 
-Make sure that you have [docker](https://npmjs.org/) and [docker-compose](https://npmjs.org/) properly installed.
+Make sure that you have [docker](https://www.docker.com) and [docker-compose](https://docs.docker.com/compose/) properly installed.
 
     $ cd docker-database && docker-compose up -d
     
