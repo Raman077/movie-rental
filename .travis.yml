@@ -2,6 +2,7 @@ language: node_js
 services:
   - docker
 before_script:
+  - mv src/datasources/db.datasource.test.json src/datasources/db.datasource.json
   - docker-compose up -d --build
 script:
   - docker exec video-rental npm test
